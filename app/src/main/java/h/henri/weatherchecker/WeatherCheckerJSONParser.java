@@ -27,15 +27,22 @@ public class WeatherCheckerJSONParser {
         //Get wind
         JSONObject wind = jObject.getJSONObject("wind");
         oWeather.setWind(wind.getDouble("speed"));
-/*
+
+        //Get weather descriptionID
+        JSONArray weather = jObject.getJSONArray("weather");
+        JSONObject descriptionID = weather.getJSONObject(0);
+        oWeather.setDescriptionID(descriptionID.getInt("id"));
+
         //Get weather description
-        JSONArray desc = new JSONArray("weather");
-        JSONObject description = desc.getJSONObject(0);
-        oWeather.setDescription(description.getString("description"));
-*/
+        JSONObject description = weather.getJSONObject(0);
+        oWeather.setDescription(description.getString("main"));
+
         //Get clouds %
         JSONObject clouds = jObject.getJSONObject("clouds");
         oWeather.setClouds(clouds.getDouble("all"));
+
+        //Get location
+        oWeather.setLocation(jObject.getString("name"));
 
         return oWeather;
     }

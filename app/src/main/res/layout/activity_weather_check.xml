@@ -5,26 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/background_Color"
     tools:context="h.henri.weatherchecker.WeatherCheckActivity">
 
-    <TextView
-        android:id="@+id/tvLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/locationTV"
+            style="@style/location_textView"
+            android:text="location"/>
 
-    <TextView
-        android:id="@+id/tvWind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tvClouds"
+
+    <h.henri.weatherchecker.WeatherCheckView
+        android:id="@+id/weatherView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTemp"
+            style="@style/location_textView"
+            android:text="TEMPERATURE" />
+
+        <TextView
+            android:layout_below="@+id/tvTemp"
+            android:id="@+id/tvClouds"
+            style="@style/weather_specs_textView"
+            android:text="Clouds"/>
+
+
+        <TextView
+            android:layout_below="@id/tvClouds"
+            android:id="@+id/tvWind"
+            style="@style/weather_specs_textView"
+            android:text="Wind"/>
+
+        <TextView
+            android:layout_below="@+id/tvWind"
+            android:id="@+id/tvDesc"
+            style="@style/weather_specs_textView"
+            android:text="Description"/>
+
+    </RelativeLayout>
+
 
 </LinearLayout>

@@ -11,7 +11,9 @@ public class Weather {
     private double temperature;
     private double wind;
     private double clouds;
+    private String location;
     private String description;
+    private int descriptionID;
 
 
     public void setTemperature(double givenTemp)
@@ -24,9 +26,14 @@ public class Weather {
         return temperature;
     }
 
-    public void setDescription(String givenDesc)
+    public void setDescriptionID(int givenDesc)
     {
-        description = givenDesc;
+        this.descriptionID = givenDesc;
+    }
+
+    public int getDescriptionID()
+    {
+        return descriptionID;
     }
 
     public String getDescription()
@@ -34,9 +41,14 @@ public class Weather {
         return description;
     }
 
-    public void setWind(double givenWind)
+    public void setDescription(String desc)
     {
-       this.wind = givenWind;
+        description = desc;
+    }
+
+    public void setWind(double wind)
+    {
+       this.wind = wind;
 
     }
 
@@ -47,11 +59,21 @@ public class Weather {
 
     public void setClouds(double givenClouds)
     {
-        clouds = givenClouds;
+        this.clouds = givenClouds;
     }
 
     public double getClouds()
     {
         return clouds;
+    }
+
+    public void setLocation(String loc)
+    {
+        this.location = loc;
+    }
+
+    public String getLocation()
+    {
+        return location;
     }
 }

@@ -1,9 +1,13 @@
 package h.henri.weatherchecker;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,9 +23,8 @@ public class WeatherCheckActivity extends AppCompatActivity {
     TextView tvLocation;
     TextView tvWind;
     TextView tvClouds;
-    //Double temperature;
-
-
+    TextView tvDesc;
+    WeatherCheckView weatherView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,25 +34,28 @@ public class WeatherCheckActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         tvTemp = (TextView) findViewById(R.id.tvTemp);
-        tvLocation = (TextView) findViewById(R.id.tvLocation);
+        tvLocation = (TextView) findViewById(R.id.locationTV);
         tvWind = (TextView) findViewById(R.id.tvWind);
         tvClouds = (TextView) findViewById(R.id.tvClouds);
+        tvDesc = (TextView) findViewById(R.id.tvDesc);
 
         location = extras.getString("keyLocation");
-        tvLocation.setText(location);
+
+
         new GetWeather().execute();
     }
 
+
     private class GetWeather extends AsyncTask<String, Void, Weather>
-    {/*
+    {
         @Override
         protected void onPreExecute()
         {
             super.onPreExecute();
             Toast.makeText(WeatherCheckActivity.this,
-                    "@strings/getting_data", Toast.LENGTH_LONG).show();
+                    R.string.get_data, Toast.LENGTH_LONG).show();
         }
-*/
+
         @Override
         protected Weather doInBackground(String...arg0)
         {
@@ -78,10 +84,20 @@ public class WeatherCheckActivity extends AppCompatActivity {
         {
             super.onPostExecute(weather);
 
-            tvTemp.setText("Temperature: " + (weather.getTemperature() - 273.15) + " celcius");
-            tvClouds.setText("Clouds" + weather.getClouds() + "%");
-            tvWind.setText("Wind: " + weather.getWind() + "m/s");
+           setWeatherView(weather);
 
         }
     }
+
+    private void setWeatherView(Weather weather)
+    {
+        weatherView = (WeatherCheckView) findViewById(R.id.weatherView);
+        weatherView.SetWeatherID(weather.getDescriptionID());
+        tvLocation.setText(weather.getLocation());
+        tvTemp.setText((float)Math.round(weather.getTemperature() - 273.15) + "°C");
+        tvClouds.setText("Clouds: " + weather.getClouds() + "%");
+        tvWind.setText("Wind: " + weather.getWind() + "m/s");
+        tvDesc.setText(weather.getDescription());
+    }
+
 }

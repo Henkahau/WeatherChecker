@@ -3,5 +3,6 @@
     <string name="type_location">Type your location</string>
     <string name="hint_location">City</string>
     <string name="search_button">Search</string>
-    <string name="getting_data">Getting weather data</string>
+    <string name="get_data">Getting weather data</string>
+
 </resources>

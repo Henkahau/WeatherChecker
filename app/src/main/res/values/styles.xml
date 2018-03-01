@@ -8,4 +8,29 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="location_textView" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/light_text_color</item>
+        <item name="android:textSize">@dimen/city_txt_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="weather_specs_textView" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/light_text_color</item>
+        <item name="android:textSize">@dimen/city_txt_size</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="buttons" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/light_text_color</item>
+        <item name="android:background">@color/button_color</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin</item>
+    </style>
+
 </resources>
